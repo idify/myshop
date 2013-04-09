@@ -1,0 +1,69 @@
+<%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="top-space">
+</div>
+	<%=render :partial=>"step1",:locals=>{:f=>f}%>
+	<h1>Payment</h1>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :email , :class => 'control-label'%>
+    <div class="controls">
+    	<%= f.text_field :email , :class => 'text_field'%>
+		</div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :address , :class => 'control-label'%>
+    <div class="controls">
+    	<%= f.text_field :address , :class => 'text_field'%>
+		</div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :city  ,:class => 'control-label'%>
+    <div class="controls">
+    	<%= f.text_field :city  ,:class => 'text_field'%>
+		</div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :state,:class => 'control-label'%>
+    <div class="controls">
+    	<%= f.text_field :state ,:class => 'text_field'%>
+		</div>
+  </div>
+
+  <div class="field">
+    <%= f.label :country ,:class => 'control-label'%>
+    <div class="controls">
+	    <%= f.country_select :country%>
+		</div>
+  </div>
+
+  <div class="field">
+    <%= f.label :gateway ,:class => 'control-label'%>
+    <div class="controls">
+	    <%= f.select :gateway ,[['Paypal','Payal'],['Authorize dot net','Authorize dot net']]%>
+		</div>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_amount ,:class => 'control-label'%>
+    <div class="controls">
+    	<%= f.text_field :total_amount ,:readonly=>true,:id=>"total_amount",:value=>@product.price * 1 ,:class => 'text_field'%>
+		</div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Pay", :class => 'btn btn-primary' %>
+  </div>
+
+    <%= f.hidden_field :transaction_id,:value=>"paypal1" %>
+
+
+<% end %>

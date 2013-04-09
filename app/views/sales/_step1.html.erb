@@ -1,0 +1,45 @@
+<script>
+	jQuery(document).ready(function() {
+		jQuery('#product_qty').change(function() {
+			var qty = parseInt(jQuery.trim(jQuery('#product_qty').val()));
+			var product_price = parseFloat(jQuery.trim(jQuery('#product_price').html()));
+			var total = qty * product_price;
+			jQuery('#total_amount_of_product').html(total);
+			jQuery('#total_amount').val(total);
+		});
+	});
+</script>
+<table class="table table-striped">
+<thead>
+<tr>
+	<th>
+		Name
+	</th>
+	<th>Qty</th>
+	<th>Price</th>
+	<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>
+	 <%=f.label @product.name%>
+	</td>
+	<%=f.fields_for :sale_products do |product|%>
+		<td>
+			<%=product.hidden_field :product_id ,:value=>@product.id %>
+			<%=product.text_field :qty,:id=>"product_qty" %>
+			<%=product.hidden_field :price ,:value=>@product.price%>
+		</td>
+	<%end%>
+	<td>
+		
+		<div id="product_price"><%=@product.price%></div>
+	</td>
+	<td>
+		<div id="total_amount_of_product" ><%=@product.price * 1%></div>
+	</td>
+</tr>
+</tbody>
+</table>
+

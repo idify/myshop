@@ -1,0 +1,6 @@
+<%- model_class = Product -%>
+<div class="page-header">
+</div>
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
+
+<%= render :partial => 'form' %>
