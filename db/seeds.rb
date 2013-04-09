@@ -9,4 +9,4 @@
 Product.create(:name=>"Shirt",:available_stock=>20,:price=>200)
 Product.create(:name=>"Book",:available_stock=>5,:price=>1299)
 Product.create(:name=>"Wine",:available_stock=>10,:price=>2000)
-
+User.create(:email=>"jony@idifysolutions.com",:password=>"dl6cd1357")

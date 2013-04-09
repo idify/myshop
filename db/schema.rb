@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409082439) do
+ActiveRecord::Schema.define(:version => 20130409145743) do
 
   create_table "admin_filters", :force => true do |t|
     t.string   "name"
@@ -56,22 +56,18 @@ ActiveRecord::Schema.define(:version => 20130409082439) do
     t.string   "city"
     t.string   "country"
     t.string   "slug"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "order_status"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.string   "order_status",   :default => "pending"
   end
 
   add_index "sales", ["slug"], :name => "index_sales_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "email"
     t.string   "password"
-    t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end

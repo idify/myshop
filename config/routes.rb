@@ -3,13 +3,15 @@ MyShop::Application.routes.draw do
     resources :filters
   end
 
-
+	match "/login" => "sessions#new" ,:as=>"login"
+	match "/logout" => "sessions#delete" ,:as=>"logout"
   resources :products  do
      get 'buy' => "sales#new"
 	end
 
   resources :sales, :path_names => { :new => 'buy', :show => 'order' }
 
+	resources :sessions,:path_names => { :new => 'login', :destroy=>'logout' }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

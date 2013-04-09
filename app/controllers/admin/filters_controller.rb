@@ -1,4 +1,5 @@
 class Admin::FiltersController < ApplicationController
+	before_filter	:require_user ,:except=>[:index,:show]
   # GET /admin/filters
   # GET /admin/filters.json
   def index
